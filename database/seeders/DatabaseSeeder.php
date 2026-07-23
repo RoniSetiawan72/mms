@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Material;
+use App\Models\Product;
+use App\Models\Supplier;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,9 +18,13 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $this->call([
+            RolesAndAdminSeeder::class
         ]);
+
+        Supplier::factory(10)->create();
+        Material::factory(50)->create();
+        Product::factory(20)->create();
+
     }
 }
